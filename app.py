@@ -42,7 +42,7 @@ def handle_message(event):
     text += "type : " + event.source.type + "\n"
     if event.source.type == "group":
         group_id = event.source.group_id
-        if group_id == "C193ba92879d441b6a12a533a18be62a9"
+        if group_id == "C193ba92879d441b6a12a533a18be62a9":
             text += "my group \n"
     message = TextSendMessage(text)
     line_bot_api.reply_message(event.reply_token, message)
