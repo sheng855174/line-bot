@@ -35,11 +35,11 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     profile = line_bot_api.get_profile(user_id)
-    text = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + "\n" +
-    "display_name : " + profile.display_name + "\n" +
+    text = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + "\n"
+'''    "display_name : " + profile.display_name + "\n" +
     "user_id : " + profile.user_id + "\n" +
     "picture_url : " + profile.picture_url + "\n" +
-    "status_message : " + profile.status_message + "\n"
+    "status_message : " + profile.status_message + "\n"'''
     message = TextSendMessage(text)
     line_bot_api.reply_message(event.reply_token, message)
 
