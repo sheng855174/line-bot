@@ -38,7 +38,6 @@ def handle_message(event):
     profile = line_bot_api.get_profile(user_id)
     text = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + "\n"
     + "display_name : " + profile.display_name + "\n"
-    + "event.source.type : " + event.source.type + "\n"
     message = TextSendMessage(text)
     line_bot_api.reply_message(event.reply_token, message)
 
