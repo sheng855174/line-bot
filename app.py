@@ -40,10 +40,10 @@ def handle_message(event):
     text += "display_name : " + profile.display_name + "\n"
     text += "user_id : " + profile.user_id + "\n"
     text += "type : " + event.source.type + "\n"
-    if event.source.type == "group" :
+    if event.source.type == "group":
         group_id = event.source.group_id
-        profile = line_bot_api.get_group_member_profile(group_id, user_id)
-        text += "group_id : " + group_id + "\n"
+        if group_id == "C193ba92879d441b6a12a533a18be62a9"
+            text += "my group \n"
     message = TextSendMessage(text)
     line_bot_api.reply_message(event.reply_token, message)
 
