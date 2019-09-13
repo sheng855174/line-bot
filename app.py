@@ -37,13 +37,9 @@ def handle_message(event):
     user_id = event.source.user_id
     profile = line_bot_api.get_profile(user_id)
     text = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + "\n"
-    + "profile.display_name : " + profile.display_name
     message = TextSendMessage(text)
     line_bot_api.reply_message(event.reply_token, message)
-'''print(profile.display_name)
-print(profile.user_id)
-print(profile.picture_url)
-print(profile.status_message)'''
+
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
