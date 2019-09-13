@@ -1,4 +1,5 @@
 from flask import Flask, request, abort
+import time
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -33,10 +34,8 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    text="user_id : "+ event.source.user_id + "\n" 
-    + "display_name : " + event.source.display_name + "\n" 
-    + "picture_url : " + event.source.picture_url + "\n"
-    + "profile.status_message : " + event.source.profile.status_message + "\n"
+    text = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + "\n"
+    "user_id : "+ event.source.user_id + "\n" 
     message = TextSendMessage(text)
     print(event.message.text)
     line_bot_api.reply_message(event.reply_token, message)
