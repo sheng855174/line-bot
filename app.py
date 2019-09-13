@@ -37,14 +37,14 @@ def handle_message(event):
     user_id = event.source.user_id
     profile = line_bot_api.get_profile(user_id)
     text = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + "\n"
-    text += "display_name : " + profile.display_name + "\n"
-    text += "user_id : " + profile.user_id + "\n"
-    text += "type : " + event.source.type + "\n"
+    text += "display_name ： " + profile.display_name + "\n"
+    text += "user_id ： " + profile.user_id + "\n"
+    text += "type ： " + event.source.type + "\n"
     if event.source.type == "group":
         group_id = event.source.group_id
+        text += "group_id ： " + event.source.type + "\n"
         if group_id == "C193ba92879d441b6a12a533a18be62a9":
-            member_ids_res = line_bot_api.get_group_member_ids(group_id)
-            text += member_ids_res.member_ids + "\n"
+            
     message = TextSendMessage(text)
     line_bot_api.reply_message(event.reply_token, message)
 
