@@ -34,7 +34,7 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    text = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + "\n"
+    text = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + "\n" +
     "user_id : "+ event.source.user_id + "\n" 
     message = TextSendMessage(text)
     print(event.message.text)
