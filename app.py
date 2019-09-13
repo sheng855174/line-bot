@@ -44,10 +44,10 @@ def handle_message(event):
         group_id = event.source.group_id
         text += "group_id ： " + group_id + "\n"
         if group_id == "C193ba92879d441b6a12a533a18be62a9":
-            fp = open("member","rw")
+            fp = open("member","r")
             line = fp.readline()
             while line:
-                text += line
+                #text += line + "\n"
                 line = fp.readline()
             fp.close()
     message = TextSendMessage(text)
