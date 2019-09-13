@@ -35,8 +35,8 @@ def callback():
 def handle_message(event):
     # get user id when reply
     user_id = event.source.user_id
-    print("user_id =", user_id)
-    message = TextSendMessage(text="hello")
+    text="hello"+user_id
+    message = TextSendMessage(text)
     print(event.message.text)
     line_bot_api.reply_message(event.reply_token, message)
 
