@@ -50,6 +50,7 @@ def handle_message(event):
                 #text += line + "\n"
                 line = fp.readline()
             fp.close()
+    print(text)
     message = TextSendMessage(text)
     line_bot_api.reply_message(event.reply_token, message)
 
