@@ -20,7 +20,16 @@
         <h2>Please enter the information</h2>
           <form action="/API/add_data" method="post">
               <div class="form-group">
+                  <input type="text" class="form-control" name="id" placeholder="Id">
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control" name="level" placeholder="Level">
+              </div>
+              <div class="form-group">
                   <input type="text" class="form-control" name="name" placeholder="Name">
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control" name="time" placeholder="Time">
               </div>
               <div class="form-group">
                   <input type="text" class="form-control" name="description" placeholder="Description">
@@ -31,19 +40,21 @@
           <table id="datatables" class="table table-hover">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Id</th>
+                    <th>Level</th>
                     <th>Name</th>
+                    <th>Time</th>
                     <th>Description</th>
-                    <th>CreateDate</th>
                 </tr>
             </thead>
             <tbody>
                {% for history in history_list %}
                    <tr>
                         <td>{{ history.Id }}</td>
+                        <td>{{ history.Level }}</td>
                         <td>{{ history.Name }}</td>
+                        <td>{{ history.Time }}</td>
                         <td>{{ history.Description }}</td>
-                        <td>{{ history.CreateDate }}</td>
                     </tr>
                {% endfor%}
             </tbody>
