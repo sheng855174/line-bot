@@ -46,6 +46,7 @@ def handle_message(event):
         group_id = event.source.group_id
         text += "group_id ： " + group_id + "\n\n"
         if group_id == "C193ba92879d441b6a12a533a18be62a9":
+            
             data_UserData = UserData.query.all()
             history_dic = {}
             history_list = []
@@ -64,7 +65,7 @@ def handle_message(event):
                 cursor  = connection.cursor()
                 cursor.execute("select * from \"UserData\"")
                 print("Selecting rows from mobile table using cursor.fetchall")
-                 for row in mobile_records:
+                for row in mobile_records:
                     text += row[0] + ", " + row[1] + ", " + row[2] + ", " + row[3] + ", " + row[4] + ", " + row[5] + "\n\n"
             except(Exception, psycopg2.Error) as error :
                 print ("Error while fetching data from PostgreSQL", error)
