@@ -57,9 +57,9 @@ def handle_message(event):
                 history_dic['Description'] = _data.Description
                 history_list.append(history_dic)
                 history_dic = {}
-                print("query data")
-                print(history_list)
-                text += history_list
+                text += history_dic
+            print("query data")
+            print(history_list)
     print(text)
     message = TextSendMessage(text)
     line_bot_api.reply_message(event.reply_token, message)
