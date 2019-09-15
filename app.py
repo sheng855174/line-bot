@@ -46,25 +46,24 @@ def handle_message(event):
         group_id = event.source.group_id
         text += "group_id ： " + group_id + "\n\n"
         if group_id == "C193ba92879d441b6a12a533a18be62a9":
-            data_UserData = UserData.query.all()
-            history_dic = {}
-            history_list = []
-            for _data in data_UserData:
-                history_dic['Id'] = _data.Id
-                history_dic['Level'] = _data.Level
-                history_dic['Name'] = _data.Name
-                history_dic['Phone'] = _data.Phone
-                history_dic['Time'] = _data.Time
-                history_dic['Description'] = _data.Description
-                history_list.append(history_dic)
-                history_dic = {}
+            if (event.message.text == "!回報"):
+                data_UserData = UserData.query.all()
+                for _data in data_UserData:
+                    text += str(_data.Id)
+                    text += str(_data.Level)
+                    text += str(_data.Name)
+                    text += str(_data.Phone)
+                    text += str(_data.Time)
+                    text += str(_data.Description)
+                    text += "\n\n"
             try:
                 connection = psycopg2.connect(database="d9858nlbmqmtfl", user="jmwsmzobgczcti", password="17582fad1e5b57cf0bd0a2530040657bc30d00ce5ae90ea99d2e46ae04357406", host="ec2-174-129-27-158.compute-1.amazonaws.com", port="5432")
                 print("Opened database successfully" + "\n")
                 cursor  = connection.cursor()
                 cursor.execute("select * from \"UserData\"")
+                result = cursor.fetchall()
                 print("Selecting rows from mobile table using cursor.fetchall")
-                for row in mobile_records:
+                for row in result:
                     text += row[0] + ", " + row[1] + ", " + row[2] + ", " + row[3] + ", " + row[4] + ", " + row[5] + "\n\n"
             except(Exception, psycopg2.Error) as error :
                 print ("Error while fetching data from PostgreSQL", error)
