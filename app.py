@@ -54,7 +54,7 @@ def handle_message(event):
                 cursor  = connection.cursor()
                 #輸出
                 if (event.message.text == "!print") or (event.message.text == "！print"):
-                    postgreSQL_select_Query = "select * from \"UserData\" where"
+                    postgreSQL_select_Query = "select * from \"UserData\""
                     cursor.execute(postgreSQL_select_Query)
                     result = cursor.fetchall()
                     for row in result:
