@@ -46,7 +46,6 @@ def handle_message(event):
         group_id = event.source.group_id
         text += "group_id ： " + group_id + "\n\n"
         if group_id == "C193ba92879d441b6a12a533a18be62a9":
-            
             data_UserData = UserData.query.all()
             history_dic = {}
             history_list = []
