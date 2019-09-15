@@ -77,7 +77,7 @@ def handle_message(event):
                         text += row[2] + " "
                         text += row[3] + "\n"
                         text += row[4] + " "
-                        text += row[5] + "\n\n"
+                        text += row[5]
                 #更新
                 if (event.message.text.find("!update") != -1) or (event.message.text.find("！update") != -1):
                     id = event.message.text.split(' ')[1]
@@ -90,8 +90,9 @@ def handle_message(event):
                     response = c.request('pool.ntp.org') 
                     ts = response.tx_time 
                     _date = time.strftime('%Y-%m-%d',time.localtime(ts)) 
-                    _time = time.strftime('%X',time.localtime(ts)) 
-                    cursor.execute(sql_update_query, (str('{} {}'.format(_date,_time)), id))
+                    _time = time.strftime('%X',time.localtime(ts))
+                    print('{} {}'.format(_date,_time))
+                    cursor.execute(sql_update_query, (('{} {}'.format(_date,_time)), id))
                     connection.commit()
                     postgreSQL_select_Query = "select * from \"UserData\" where \"Id\"=%s"
                     cursor.execute(postgreSQL_select_Query, (id,))
@@ -102,7 +103,7 @@ def handle_message(event):
                         text += row[2] + " "
                         text += row[3] + "\n"
                         text += row[4] + " "
-                        text += row[5] + "\n\n"
+                        text += row[5]
                 #重置
                 if (event.message.text.find("!reset") != -1) or (event.message.text.find("！reset") != -1):
                     id = "24127"
