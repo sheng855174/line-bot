@@ -56,7 +56,7 @@ def handle_message(event):
                     text += str(_data.Time) + ", "
                     text += str(_data.Description)
                     text += "\n\n"
-            if (event.message.text == "!query") or (event.message.text == "！query"):
+            if (event.message.text.find("!query") != -1) or (event.message.text.find("！query") != -1):
                 print(event.message.text.split(' '))
                 try:
                     connection = psycopg2.connect(database="d9858nlbmqmtfl", user="jmwsmzobgczcti", password="17582fad1e5b57cf0bd0a2530040657bc30d00ce5ae90ea99d2e46ae04357406", host="ec2-174-129-27-158.compute-1.amazonaws.com", port="5432")
@@ -66,7 +66,12 @@ def handle_message(event):
                     result = cursor.fetchall()
                     print("Selecting rows from mobile table using cursor.fetchall")
                     for row in result:
-                        text += str(row[0]) + ", " + row[1] + ", " + row[2] + ", " + row[3] + ", " + row[4] + ", " + row[5] + "\n\n"
+                        text += str(row[0]) + ", "
+                        text += row[1] + ", "
+                        text += row[2] + ", "
+                        text += row[3] + "\n"
+                        text += row[4] + ", "
+                        text += row[5] + "\n\n"
                 except(Exception, psycopg2.Error) as error :
                     print ("Error while fetching data from PostgreSQL", error)
                 finally:
