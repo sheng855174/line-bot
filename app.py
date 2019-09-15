@@ -58,12 +58,11 @@ def handle_message(event):
                     text += "\n\n"
             if (event.message.text.find("!query") != -1) or (event.message.text.find("！query") != -1):
                 id = event.message.text.split(' ')[1]
-                print(id)
                 try:
                     connection = psycopg2.connect(database="d9858nlbmqmtfl", user="jmwsmzobgczcti", password="17582fad1e5b57cf0bd0a2530040657bc30d00ce5ae90ea99d2e46ae04357406", host="ec2-174-129-27-158.compute-1.amazonaws.com", port="5432")
                     print("Opened database successfully" + "\n")
                     cursor  = connection.cursor()
-                    cursor.execute("select * from \"UserData\"")
+                    cursor.execute("select * from \"UserData\" where Id=" + id + ";")
                     result = cursor.fetchall()
                     print("Selecting rows from mobile table using cursor.fetchall")
                     for row in result:
