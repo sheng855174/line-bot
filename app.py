@@ -89,10 +89,10 @@ def handle_message(event):
                     connection.commit()
                     sql_update_query = "Update \"UserData\" set \"Time\"=%s where \"Id\"=%s"
                     t = time.time()
+                    dt = datetime.datetime.fromtimestamp(t).strftime('%Y-%m-%d %H:%M:%S')
                     tw = pytz.timezone('Asia/Taipei')
-                    dt = datetime.datetime.strptime(datetime.datetime.fromtimestamp(t).strftime('%Y-%m-%d %H:%M:%S'),'%Y-%m-%d %H:%M:%S').replace(tzinfo=tw)
-                    print()
-                    cursor.execute(sql_update_query, (str(dt)[:str(dt).find("+")], id))
+                    dt = datetime.datetime.strptime(dt,'%Y-%m-%d %H:%M:%S').replace(tzinfo=tw)
+                    cursor.execute(sql_update_query, (dt, id))
                     connection.commit()
                     postgreSQL_select_Query = "select * from \"UserData\" where \"Id\"=%s"
                     cursor.execute(postgreSQL_select_Query, (id,))
