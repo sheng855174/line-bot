@@ -5,7 +5,7 @@ from flask_migrate import Migrate, MigrateCommand
 
 app = Flask(__name__)
 app.config[
-    'SQLALCHEMY_DATABASE_URI'] = "postgres://eklbozojortqrx:d8c89da2d9873d79d783541f03e8aa38f99cfd16ce15106c39d5aaf80e1935a8@ec2-54-221-214-3.compute-1.amazonaws.com:5432/dfgqosf2kto6vk"
+    'SQLALCHEMY_DATABASE_URI'] = "postgres://jmwsmzobgczcti:17582fad1e5b57cf0bd0a2530040657bc30d00ce5ae90ea99d2e46ae04357406@ec2-174-129-27-158.compute-1.amazonaws.com:5432/d9858nlbmqmtfl"
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -25,12 +25,14 @@ class UserData(db.Model):
     Description = db.Column(db.String(256))
 
     def __init__(self
+                 , Id
                  , Level
                  , Name
                  , Phone
                  , Time
                  , Description
                  ):
+        self.Id = Id
         self.Level = Level
         self.Name = Name
         self.Phone = Phone
