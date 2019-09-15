@@ -54,7 +54,7 @@ def handle_message(event):
                 cursor  = connection.cursor()
                 #輸出
                 if (event.message.text == "!print") or (event.message.text == "！print"):
-                    postgreSQL_select_Query = "select * from \"UserData\""
+                    postgreSQL_select_Query = "select * from \"UserData\ order by \"Id\" ASC"
                     cursor.execute(postgreSQL_select_Query)
                     result = cursor.fetchall()
                     for row in result:
@@ -81,8 +81,11 @@ def handle_message(event):
                 if (event.message.text.find("!update") != -1) or (event.message.text.find("！update") != -1):
                     id = event.message.text.split(' ')[1]
                     description = event.message.text.split(' ')[2]
-                    sql_update_query = "Update \"UserData\" set \"Description\"=%s \"Time\"=%s where \"Id\"=%s"
-                    cursor.execute(sql_update_query, (description,time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), id))
+                    sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
+                    cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    sql_update_query = "Update \"UserData\" set \"Time\"=%s where \"Id\"=%s"
+                    cursor.execute(sql_update_query, (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), id))
                     connection.commit()
                     postgreSQL_select_Query = "select * from \"UserData\" where \"Id\"=%s"
                     cursor.execute(postgreSQL_select_Query, (id,))
