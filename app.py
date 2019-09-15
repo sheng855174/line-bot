@@ -55,7 +55,6 @@ def handle_message(event):
                 cursor  = connection.cursor()
                 #輸出
                 if (event.message.text == "!print") or (event.message.text == "！print"):
-                    print("output")
                     postgreSQL_select_Query = "select * from \"UserData\" order by \"Id\" ASC"
                     cursor.execute(postgreSQL_select_Query)
                     result = cursor.fetchall()
@@ -92,7 +91,8 @@ def handle_message(event):
                     ts = response.tx_time 
                     _date = time.strftime('%Y-%m-%d',time.localtime(ts)) 
                     _time = time.strftime('%X',time.localtime(ts)) 
-                    cursor.execute(sql_update_query, str('{} {}'.format(_date,_time)), id))
+                    currrntTime = str('{} {}'.format(_date,_time)) 
+                    cursor.execute(sql_update_query, currrntTime, id))
                     connection.commit()
                     postgreSQL_select_Query = "select * from \"UserData\" where \"Id\"=%s"
                     cursor.execute(postgreSQL_select_Query, (id,))
