@@ -91,7 +91,7 @@ def handle_message(event):
                     ts = response.tx_time 
                     _date = time.strftime('%Y-%m-%d',time.localtime(ts)) 
                     _time = time.strftime('%X',time.localtime(ts)) 
-                    cursor.execute(sql_update_query, str('{} {}'.format(_date,_time)), id)
+                    cursor.execute(sql_update_query, (str('{} {}'.format(_date,_time)), id))
                     connection.commit()
                     postgreSQL_select_Query = "select * from \"UserData\" where \"Id\"=%s"
                     cursor.execute(postgreSQL_select_Query, (id,))
@@ -180,7 +180,7 @@ def handle_message(event):
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
-                    text += "重置成功!"
+                    text += "重置成功！"
             except(Exception, psycopg2.Error) as error :
                         print ("Error while fetching data from PostgreSQL", error)
             finally:
