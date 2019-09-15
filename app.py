@@ -111,6 +111,7 @@ def handle_message(event):
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
+                    sql_update_query = "Update \"UserData\" set \"Time\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     id = "24128"
@@ -118,6 +119,7 @@ def handle_message(event):
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
+                    sql_update_query = "Update \"UserData\" set \"Time\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     id = "24129"
@@ -125,6 +127,7 @@ def handle_message(event):
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
+                    sql_update_query = "Update \"UserData\" set \"Time\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     id = "24130"
@@ -132,6 +135,7 @@ def handle_message(event):
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
+                    sql_update_query = "Update \"UserData\" set \"Time\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     id = "24131"
@@ -139,6 +143,7 @@ def handle_message(event):
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
+                    sql_update_query = "Update \"UserData\" set \"Time\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     id = "24132"
@@ -146,6 +151,7 @@ def handle_message(event):
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
+                    sql_update_query = "Update \"UserData\" set \"Time\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     id = "24133"
@@ -153,6 +159,7 @@ def handle_message(event):
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
+                    sql_update_query = "Update \"UserData\" set \"Time\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     id = "24134"
@@ -160,6 +167,7 @@ def handle_message(event):
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
+                    sql_update_query = "Update \"UserData\" set \"Time\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     id = "24135"
@@ -167,6 +175,7 @@ def handle_message(event):
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
+                    sql_update_query = "Update \"UserData\" set \"Time\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     id = "24136"
@@ -174,6 +183,7 @@ def handle_message(event):
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
+                    sql_update_query = "Update \"UserData\" set \"Time\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     id = "24137"
@@ -181,6 +191,7 @@ def handle_message(event):
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
+                    sql_update_query = "Update \"UserData\" set \"Time\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     id = "24138"
@@ -188,6 +199,7 @@ def handle_message(event):
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
+                    sql_update_query = "Update \"UserData\" set \"Time\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     id = "24139"
@@ -195,6 +207,7 @@ def handle_message(event):
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
+                    sql_update_query = "Update \"UserData\" set \"Time\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     id = "24140"
@@ -202,6 +215,7 @@ def handle_message(event):
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
+                    sql_update_query = "Update \"UserData\" set \"Time\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     id = "24141"
@@ -209,6 +223,7 @@ def handle_message(event):
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
+                    sql_update_query = "Update \"UserData\" set \"Time\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     text += "重置成功！"
