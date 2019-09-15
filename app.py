@@ -59,13 +59,21 @@ def handle_message(event):
                 text += str(history_dic) + "\n"
                 history_list.append(history_dic)
                 history_dic = {}
-            conn = psycopg2.connect(database="d9858nlbmqmtfl", user="jmwsmzobgczcti", password="17582fad1e5b57cf0bd0a2530040657bc30d00ce5ae90ea99d2e46ae04357406", host="ec2-174-129-27-158.compute-1.amazonaws.com", port="5432")
-            print("Opened database successfully" + "\n")
-            cursor  = connection.cursor()
-            cursor.execute("select * from UserData")
-            text += str(cur.fetchall)
-            print("Operation done successfully" + "\n")
-            conn.close()
+            try:
+                connection = psycopg2.connect(database="d9858nlbmqmtfl", user="jmwsmzobgczcti", password="17582fad1e5b57cf0bd0a2530040657bc30d00ce5ae90ea99d2e46ae04357406", host="ec2-174-129-27-158.compute-1.amazonaws.com", port="5432")
+                print("Opened database successfully" + "\n")
+                cursor  = connection.cursor()
+                cursor.execute("select * from UserData")
+                print("Selecting rows from mobile table using cursor.fetchall")
+                text += str(cur.fetchall)
+            except(Exception, psycopg2.Error) as error :
+                print ("Error while fetching data from PostgreSQL", error)
+            finally:
+                #closing database connection.
+                if(connection):
+                    cursor.close()
+                    connection.close()
+                    print("PostgreSQL connection is closed")
     print(text)
     message = TextSendMessage(text)
     line_bot_api.reply_message(event.reply_token, message)
