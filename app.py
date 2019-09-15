@@ -1,5 +1,6 @@
 from flask import Flask, request, abort
-import time
+import time 
+import ntplib 
 from dbModel import *
 import psycopg2
 
@@ -71,11 +72,11 @@ def handle_message(event):
                     cursor.execute(postgreSQL_select_Query, (id,))
                     result = cursor.fetchall()
                     for row in result:
-                        text += str(row[0]) + ", "
-                        text += row[1] + ", "
-                        text += row[2] + ", "
+                        text += str(row[0]) + " "
+                        text += row[1] + " "
+                        text += row[2] + " "
                         text += row[3] + "\n"
-                        text += row[4] + ", "
+                        text += row[4] + " "
                         text += row[5] + "\n\n"
                 #更新
                 if (event.message.text.find("!update") != -1) or (event.message.text.find("！update") != -1):
@@ -85,18 +86,101 @@ def handle_message(event):
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
                     sql_update_query = "Update \"UserData\" set \"Time\"=%s where \"Id\"=%s"
-                    cursor.execute(sql_update_query, (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), id))
+                    c = ntplib.NTPClient() 
+                    response = c.request('pool.ntp.org') 
+                    ts = response.tx_time 
+                    _date = time.strftime('%Y-%m-%d',time.localtime(ts)) 
+                    _time = time.strftime('%X',time.localtime(ts)) 
+                    cursor.execute(sql_update_query, ('{} {}'.format(_date,_time)), id))
                     connection.commit()
                     postgreSQL_select_Query = "select * from \"UserData\" where \"Id\"=%s"
                     cursor.execute(postgreSQL_select_Query, (id,))
                     result = cursor.fetchall()
                     for row in result:
-                        text += str(row[0]) + ", "
-                        text += row[1] + ", "
-                        text += row[2] + ", "
+                        text += str(row[0]) + " "
+                        text += row[1] + " "
+                        text += row[2] + " "
                         text += row[3] + "\n"
-                        text += row[4] + ", "
+                        text += row[4] + " "
                         text += row[5] + "\n\n"
+                #重置
+                if (event.message.text.find("!reset") != -1) or (event.message.text.find("！reset") != -1):
+                    id = "24127"
+                    description = "未回報"
+                    sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
+                    cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    id = "24128"
+                    description = "未回報"
+                    sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
+                    cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    id = "24129"
+                    description = "未回報"
+                    sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
+                    cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    id = "24130"
+                    description = "未回報"
+                    sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
+                    cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    id = "24131"
+                    description = "未回報"
+                    sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
+                    cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    id = "24132"
+                    description = "未回報"
+                    sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
+                    cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    id = "24133"
+                    description = "未回報"
+                    sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
+                    cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    id = "24134"
+                    description = "未回報"
+                    sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
+                    cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    id = "24135"
+                    description = "未回報"
+                    sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
+                    cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    id = "24136"
+                    description = "未回報"
+                    sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
+                    cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    id = "24137"
+                    description = "未回報"
+                    sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
+                    cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    id = "24138"
+                    description = "未回報"
+                    sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
+                    cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    id = "24139"
+                    description = "未回報"
+                    sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
+                    cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    id = "24140"
+                    description = "未回報"
+                    sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
+                    cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    id = "24141"
+                    description = "未回報"
+                    sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
+                    cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    text += "重置成功!"
             except(Exception, psycopg2.Error) as error :
                         print ("Error while fetching data from PostgreSQL", error)
             finally:
