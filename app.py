@@ -56,7 +56,7 @@ def handle_message(event):
                 history_dic['Phone'] = _data.Phone
                 history_dic['Time'] = _data.Time
                 history_dic['Description'] = _data.Description
-                text += str(history_dic) + "\n\n"
+                #text += str(history_dic) + "\n\n"
                 history_list.append(history_dic)
                 history_dic = {}
             try:
@@ -65,7 +65,7 @@ def handle_message(event):
                 cursor  = connection.cursor()
                 cursor.execute("select * from \"UserData\"")
                 print("Selecting rows from mobile table using cursor.fetchall")
-                text += str(cur.fetchall)
+                text += str(cursor.fetchall)
             except(Exception, psycopg2.Error) as error :
                 print ("Error while fetching data from PostgreSQL", error)
             finally:
