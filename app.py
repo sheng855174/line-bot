@@ -57,7 +57,8 @@ def handle_message(event):
                     text += str(_data.Description)
                     text += "\n\n"
             if (event.message.text.find("!query") != -1) or (event.message.text.find("！query") != -1):
-                print(event.message.text.split(' '))
+                id = event.message.text.split(' ')[1]
+                print(id)
                 try:
                     connection = psycopg2.connect(database="d9858nlbmqmtfl", user="jmwsmzobgczcti", password="17582fad1e5b57cf0bd0a2530040657bc30d00ce5ae90ea99d2e46ae04357406", host="ec2-174-129-27-158.compute-1.amazonaws.com", port="5432")
                     print("Opened database successfully" + "\n")
