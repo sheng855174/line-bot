@@ -56,7 +56,7 @@ def handle_message(event):
                 history_dic['Phone'] = _data.Phone
                 history_dic['Time'] = _data.Time
                 history_dic['Description'] = _data.Description
-                text += str(history_dic) + "\n"
+                text += "```" + str(history_dic) + "```\n"
                 history_list.append(history_dic)
                 history_dic = {}
             try:
