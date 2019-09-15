@@ -46,36 +46,35 @@ def handle_message(event):
         group_id = event.source.group_id
         text += "group_id ： " + group_id + "\n\n"
         if group_id == "C193ba92879d441b6a12a533a18be62a9":
-            if (event.message.text == "!回報"):
+            if (event.message.text == "!print"):
                 data_UserData = UserData.query.all()
                 for _data in data_UserData:
-                    text += str(_data.Id) + ","
-                    text += str(_data.Level) + ","
-                    text += str(_data.Name) + ","
-                    text += str(_data.Phone) + ",\n"
-                    text += str(_data.Time) + ","
+                    text += str(_data.Id) + ", "
+                    text += str(_data.Level) + ", "
+                    text += str(_data.Name) + ", "
+                    text += str(_data.Phone) + "\n"
+                    text += str(_data.Time) + ", "
                     text += str(_data.Description)
                     text += "\n\n"
-                print(text)
-                message = TextSendMessage(text)
-                line_bot_api.reply_message(event.reply_token, message)
-            try:
-                connection = psycopg2.connect(database="d9858nlbmqmtfl", user="jmwsmzobgczcti", password="17582fad1e5b57cf0bd0a2530040657bc30d00ce5ae90ea99d2e46ae04357406", host="ec2-174-129-27-158.compute-1.amazonaws.com", port="5432")
-                print("Opened database successfully" + "\n")
-                cursor  = connection.cursor()
-                cursor.execute("select * from \"UserData\"")
-                result = cursor.fetchall()
-                print("Selecting rows from mobile table using cursor.fetchall")
-                for row in result:
-                    text += str(row[0]) + ", " + row[1] + ", " + row[2] + ", " + row[3] + ", " + row[4] + ", " + row[5] + "\n\n"
-            except(Exception, psycopg2.Error) as error :
-                print ("Error while fetching data from PostgreSQL", error)
-            finally:
-                #closing database connection.
-                if(connection):
-                    cursor.close()
-                    connection.close()
-                    print("PostgreSQL connection is closed")
+            if (event.message.text == "!query"):
+                print(event.message.text.split(' '))
+                try:
+                    connection = psycopg2.connect(database="d9858nlbmqmtfl", user="jmwsmzobgczcti", password="17582fad1e5b57cf0bd0a2530040657bc30d00ce5ae90ea99d2e46ae04357406", host="ec2-174-129-27-158.compute-1.amazonaws.com", port="5432")
+                    print("Opened database successfully" + "\n")
+                    cursor  = connection.cursor()
+                    cursor.execute("select * from \"UserData\"")
+                    result = cursor.fetchall()
+                    print("Selecting rows from mobile table using cursor.fetchall")
+                    for row in result:
+                        text += str(row[0]) + ", " + row[1] + ", " + row[2] + ", " + row[3] + ", " + row[4] + ", " + row[5] + "\n\n"
+                except(Exception, psycopg2.Error) as error :
+                    print ("Error while fetching data from PostgreSQL", error)
+                finally:
+                    #closing database connection.
+                    if(connection):
+                        cursor.close()
+                        connection.close()
+                        print("PostgreSQL connection is closed")
     print(text)
     message = TextSendMessage(text)
     line_bot_api.reply_message(event.reply_token, message)
