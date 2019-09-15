@@ -44,12 +44,7 @@ def handle_message(event):
         group_id = event.source.group_id
         text += "group_id ： " + group_id + "\n"
         if group_id == "C193ba92879d441b6a12a533a18be62a9":
-            fp = open("member.py","r")
-            line = fp.readline()
-            while line:
-                #text += line + "\n"
-                line = fp.readline()
-            fp.close()
+            text += "success"
     print(text)
     message = TextSendMessage(text)
     line_bot_api.reply_message(event.reply_token, message)
