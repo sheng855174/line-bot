@@ -45,9 +45,9 @@ def add_data():
             Id=id,
             Level=level,
             Name=name,
-            phone=phone,
-            time=Time,
-            description=Description
+            Phone=phone,
+            Time=time,
+            Description=description
         )
         print("add data")
         print(add_data)
