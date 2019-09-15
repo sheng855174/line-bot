@@ -28,18 +28,12 @@ def index():
 
 @app.route('/API/add_data', methods=['POST'])
 def add_data():
-    id = 24127
-    level = "二兵"
-    name = "李欣倫"
-    phone = "0970926068"
-    time = "2019-12-01 09:00"
-    description = "未回報"
-    print(id)
-    print(level)
-    print(name)
-    print(phone)
-    print(time)
-    print(description)
+    id = int(request.form['id'])
+    level = request.form['level']
+    name = request.form['name']
+    phone = request.form['phone']
+    time = request.form['time']
+    description = request.form['description']
     if id != "":
         add_data = UserData(
             Id=id,
