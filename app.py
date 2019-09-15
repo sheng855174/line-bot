@@ -44,7 +44,21 @@ def handle_message(event):
         group_id = event.source.group_id
         text += "group_id ： " + group_id + "\n"
         if group_id == "C193ba92879d441b6a12a533a18be62a9":
-            text += "success"
+            data_UserData = UserData.query.all()
+            history_dic = {}
+            history_list = []
+            for _data in data_UserData:
+                history_dic['Id'] = _data.Id
+                history_dic['Level'] = _data.Level
+                history_dic['Name'] = _data.Name
+                history_dic['Phone'] = _data.Phone
+                history_dic['Time'] = _data.Time
+                history_dic['Description'] = _data.Description
+                history_list.append(history_dic)
+                history_dic = {}
+                print("query data")
+                print(history_list)
+                text += history_list
     print(text)
     message = TextSendMessage(text)
     line_bot_api.reply_message(event.reply_token, message)
