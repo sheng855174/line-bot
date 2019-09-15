@@ -44,9 +44,10 @@ def handle_message(event):
     text += "user_id ： " + profile.user_id + "\n"
     text += "type ： " + event.source.type + "\n"
     '''
+    text=""
     if event.source.type == "group":
         group_id = event.source.group_id
-        text += "group_id ： " + group_id + "\n\n"
+        #text += "group_id ： " + group_id + "\n\n"
         if group_id == "C193ba92879d441b6a12a533a18be62a9":
             if (event.message.text == "!print") or (event.message.text == "！print"):
                 data_UserData = UserData.query.all()
