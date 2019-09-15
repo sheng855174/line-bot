@@ -103,80 +103,113 @@ def handle_message(event):
                         text += row[5]
                 #重置
                 if (event.message.text.find("!reset") != -1) or (event.message.text.find("！reset") != -1):
+                    timeStamp = int(time.time()+28800)
+                    timeArray = time.localtime(timeStamp)
+                    otherStyleTime = time.strftime("%Y-%m-%d %H:%M:%S", timeArray)
                     id = "24127"
                     description = "未回報"
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     id = "24128"
                     description = "未回報"
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
+                    cursor.execute(sql_update_query, (otherStyleTime, id))
+                    connection.commit()
                     id = "24129"
                     description = "未回報"
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     id = "24130"
                     description = "未回報"
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
+                    cursor.execute(sql_update_query, (otherStyleTime, id))
+                    connection.commit()
                     id = "24131"
                     description = "未回報"
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     id = "24132"
                     description = "未回報"
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
+                    cursor.execute(sql_update_query, (otherStyleTime, id))
+                    connection.commit()
                     id = "24133"
                     description = "未回報"
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     id = "24134"
                     description = "未回報"
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
+                    cursor.execute(sql_update_query, (otherStyleTime, id))
+                    connection.commit()
                     id = "24135"
                     description = "未回報"
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     id = "24136"
                     description = "未回報"
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
+                    cursor.execute(sql_update_query, (otherStyleTime, id))
+                    connection.commit()
                     id = "24137"
                     description = "未回報"
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     id = "24138"
                     description = "未回報"
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
+                    cursor.execute(sql_update_query, (otherStyleTime, id))
+                    connection.commit()
                     id = "24139"
                     description = "未回報"
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     id = "24140"
                     description = "未回報"
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
+                    cursor.execute(sql_update_query, (otherStyleTime, id))
+                    connection.commit()
                     id = "24141"
                     description = "未回報"
                     sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
                     cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     text += "重置成功！"
             except(Exception, psycopg2.Error) as error :
