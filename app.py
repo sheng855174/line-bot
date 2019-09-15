@@ -61,9 +61,9 @@ def handle_message(event):
                 history_dic = {}
             conn = psycopg2.connect(database="d9858nlbmqmtfl", user="jmwsmzobgczcti", password="17582fad1e5b57cf0bd0a2530040657bc30d00ce5ae90ea99d2e46ae04357406", host="ec2-174-129-27-158.compute-1.amazonaws.com", port="5432")
             print("Opened database successfully" + "\n")
-            cur = conn.cursor()
-            cur.execute("SELECT Id from *")
-            text += cur.fetchall
+            cursor  = connection.cursor()
+            cursor.execute("select * from UserData")
+            text += str(cur.fetchall)
             print("Operation done successfully" + "\n")
             conn.close()
     print(text)
