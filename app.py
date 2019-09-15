@@ -96,12 +96,11 @@ def handle_message(event):
                         text += row[5] + "\n\n"
             except(Exception, psycopg2.Error) as error :
                         print ("Error while fetching data from PostgreSQL", error)
-                    finally:
-                        #closing database connection.
-                        if(connection):
-                            cursor.close()
-                            connection.close()
-                            print("PostgreSQL connection is closed")
+            finally:
+                if(connection):
+                    cursor.close()
+                    connection.close()
+                    print("PostgreSQL connection is closed")
     print(text)
     message = TextSendMessage(text)
     line_bot_api.reply_message(event.reply_token, message)
