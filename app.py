@@ -62,6 +62,31 @@ def handle_message(event):
                     connection = psycopg2.connect(database="d9858nlbmqmtfl", user="jmwsmzobgczcti", password="17582fad1e5b57cf0bd0a2530040657bc30d00ce5ae90ea99d2e46ae04357406", host="ec2-174-129-27-158.compute-1.amazonaws.com", port="5432")
                     print("Opened database successfully" + "\n")
                     cursor  = connection.cursor()
+                    postgreSQL_select_Query = "select * from \"UserData\" where id = %d"
+                    cursor.execute(postgreSQL_select_Query, (id,))
+                    result = cursor.fetchall()
+                    print("Selecting rows from mobile table using cursor.fetchall")
+                    for row in result:
+                        text += str(row[0]) + ", "
+                        text += row[1] + ", "
+                        text += row[2] + ", "
+                        text += row[3] + "\n"
+                        text += row[4] + ", "
+                        text += row[5] + "\n\n"
+                except(Exception, psycopg2.Error) as error :
+                    print ("Error while fetching data from PostgreSQL", error)
+                finally:
+                    #closing database connection.
+                    if(connection):
+                        cursor.close()
+                        connection.close()
+                        print("PostgreSQL connection is closed")
+            if (event.message.text.find("!update") != -1) or (event.message.text.find("！update") != -1):
+                id = event.message.text.split(' ')[1]
+                try:
+                    connection = psycopg2.connect(database="d9858nlbmqmtfl", user="jmwsmzobgczcti", password="17582fad1e5b57cf0bd0a2530040657bc30d00ce5ae90ea99d2e46ae04357406", host="ec2-174-129-27-158.compute-1.amazonaws.com", port="5432")
+                    print("Opened database successfully" + "\n")
+                    cursor  = connection.cursor()
                     cursor.execute("select * from \"UserData\" where Id=" + id + ";")
                     result = cursor.fetchall()
                     print("Selecting rows from mobile table using cursor.fetchall")
