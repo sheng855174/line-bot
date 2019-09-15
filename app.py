@@ -63,7 +63,7 @@ def handle_message(event):
                     print("Opened database successfully" + "\n")
                     cursor  = connection.cursor()
                     postgreSQL_select_Query = "select * from \"UserData\" where id = %d"
-                    cursor.execute(postgreSQL_select_Query, (id,))
+                    cursor.execute(postgreSQL_select_Query, (int(id),))
                     result = cursor.fetchall()
                     print("Selecting rows from mobile table using cursor.fetchall")
                     for row in result:
@@ -87,7 +87,7 @@ def handle_message(event):
                     connection = psycopg2.connect(database="d9858nlbmqmtfl", user="jmwsmzobgczcti", password="17582fad1e5b57cf0bd0a2530040657bc30d00ce5ae90ea99d2e46ae04357406", host="ec2-174-129-27-158.compute-1.amazonaws.com", port="5432")
                     print("Opened database successfully" + "\n")
                     cursor  = connection.cursor()
-                    cursor.execute("select * from \"UserData\" where Id=" + id + ";")
+                    sql_update_query = "Update mobile set price = %s where id = %s"
                     result = cursor.fetchall()
                     print("Selecting rows from mobile table using cursor.fetchall")
                     for row in result:
