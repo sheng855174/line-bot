@@ -3,8 +3,6 @@ import time
 import ntplib
 from dbModel import *
 import psycopg2
-import datetime
-import pytz
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -88,11 +86,8 @@ def handle_message(event):
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
                     sql_update_query = "Update \"UserData\" set \"Time\"=%s where \"Id\"=%s"
-                    tw = pytz.timezone('Asia/Taipei')
-                    t = time.time()
-                    dt = datetime.datetime.fromtimestamp(t).strftime('%Y-%m-%d %H:%M:%S')
-                    dt = datetime.datetime.strptime(dt,'%Y-%m-%d %H:%M:%S').replace(tzinfo=tw)
-                    cursor.execute(sql_update_query, (dt, id))
+                    localtime = time.asctime( time.localtime(time.time()+28800) )
+                    cursor.execute(sql_update_query, (localtime, id))
                     connection.commit()
                     postgreSQL_select_Query = "select * from \"UserData\" where \"Id\"=%s"
                     cursor.execute(postgreSQL_select_Query, (id,))
