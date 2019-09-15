@@ -45,6 +45,7 @@ def handle_message(event):
     if event.source.type == "group":
         group_id = event.source.group_id
         text += "group_id ： " + group_id + "\n"
+        text += "============================"
         if group_id == "C193ba92879d441b6a12a533a18be62a9":
             data_UserData = UserData.query.all()
             history_dic = {}
@@ -56,7 +57,7 @@ def handle_message(event):
                 history_dic['Phone'] = _data.Phone
                 history_dic['Time'] = _data.Time
                 history_dic['Description'] = _data.Description
-                text += "```" + str(history_dic) + "```\n"
+                text += str(history_dic) + "\n\n"
                 history_list.append(history_dic)
                 history_dic = {}
             try:
