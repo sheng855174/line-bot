@@ -28,12 +28,12 @@ def index():
 
 @app.route('/API/add_data', methods=['POST'])
 def add_data():
-    id = request.form['Id']
-    level = request.form['Level']
-    name = request.form['Name']
-    phone = request.form['Phone']
-    time = request.form['Time']
-    description = request.form['Description']
+    id = 24127
+    level = "二兵"
+    name = "李欣倫"
+    phone = "0970926068"
+    time = "2019-12-01 09:00"
+    description = "未回報"
     print(id)
     print(level)
     print(name)
