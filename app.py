@@ -92,7 +92,7 @@ def handle_message(event):
                     ts = response.tx_time 
                     _date = time.strftime('%Y-%m-%d',time.localtime(ts)) 
                     _time = time.strftime('%X',time.localtime(ts)) 
-                    cursor.execute(sql_update_query, ('{} {}'.format(_date,_time)), id))
+                    cursor.execute(sql_update_query, str('{} {}'.format(_date,_time)), id))
                     connection.commit()
                     postgreSQL_select_Query = "select * from \"UserData\" where \"Id\"=%s"
                     cursor.execute(postgreSQL_select_Query, (id,))
