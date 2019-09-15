@@ -86,8 +86,10 @@ def handle_message(event):
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
                     sql_update_query = "Update \"UserData\" set \"Time\"=%s where \"Id\"=%s"
-                    localtime = time.asctime( time.localtime(time.time()+28800) )
-                    cursor.execute(sql_update_query, (localtime, id))
+                    timeStamp = int(time.time()+28800)
+                    timeArray = time.localtime(timeStamp)
+                    otherStyleTime = time.strftime("%Y-%m-%d %H:%M:%S", timeArray)
+                    cursor.execute(sql_update_query, (otherStyleTime, id))
                     connection.commit()
                     postgreSQL_select_Query = "select * from \"UserData\" where \"Id\"=%s"
                     cursor.execute(postgreSQL_select_Query, (id,))
