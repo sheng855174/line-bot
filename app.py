@@ -46,7 +46,7 @@ def handle_message(event):
         group_id = event.source.group_id
         text += "group_id ： " + group_id + "\n\n"
         if group_id == "C193ba92879d441b6a12a533a18be62a9":
-            if (event.message.text == "!print"):
+            if (event.message.text == "!print") or (event.message.text == "！print"):
                 data_UserData = UserData.query.all()
                 for _data in data_UserData:
                     text += str(_data.Id) + ", "
@@ -56,7 +56,7 @@ def handle_message(event):
                     text += str(_data.Time) + ", "
                     text += str(_data.Description)
                     text += "\n\n"
-            if (event.message.text == "!query"):
+            if (event.message.text == "!query") or (event.message.text == "！query"):
                 print(event.message.text.split(' '))
                 try:
                     connection = psycopg2.connect(database="d9858nlbmqmtfl", user="jmwsmzobgczcti", password="17582fad1e5b57cf0bd0a2530040657bc30d00ce5ae90ea99d2e46ae04357406", host="ec2-174-129-27-158.compute-1.amazonaws.com", port="5432")
