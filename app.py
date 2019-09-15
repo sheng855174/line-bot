@@ -55,15 +55,15 @@ def handle_message(event):
                 #輸出
                 if (event.message.text == "!print") or (event.message.text == "！print"):
                     postgreSQL_select_Query = "select * from \"UserData\" where"
-                        cursor.execute(postgreSQL_select_Query)
-                        result = cursor.fetchall()
-                        for row in result:
-                            text += str(row[0]) + ", "
-                            text += row[1] + ", "
-                            text += row[2] + ", "
-                            text += row[3] + "\n"
-                            text += row[4] + ", "
-                            text += row[5] + "\n\n"
+                    cursor.execute(postgreSQL_select_Query)
+                    result = cursor.fetchall()
+                    for row in result:
+                        text += str(row[0]) + ", "
+                        text += row[1] + ", "
+                        text += row[2] + ", "
+                        text += row[3] + "\n"
+                        text += row[4] + ", "
+                        text += row[5] + "\n\n"
                 #查詢
                 if (event.message.text.find("!query") != -1) or (event.message.text.find("！query") != -1):
                     id = event.message.text.split(' ')[1]
