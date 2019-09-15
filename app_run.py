@@ -13,25 +13,38 @@ def index():
     history_dic = {}
     history_list = []
     for _data in data_UserData:
-        history_dic['Name'] = _data.Name
         history_dic['Id'] = _data.Id
+        history_dic['Level'] = _data.Level
+        history_dic['Name'] = _data.Name
+        history_dic['Phone'] = _data.Phone
+        history_dic['Time'] = _data.Time
         history_dic['Description'] = _data.Description
-        history_dic['CreateDate'] = _data.CreateDate.strftime('%Y/%m/%d %H:%M:%S')
         history_list.append(history_dic)
         history_dic = {}
+        print("query data")
+        print(history_list)
     return render_template('index.html', **locals())
 
 
 @app.route('/API/add_data', methods=['POST'])
 def add_data():
-    name = request.form['name']
-    description = request.form['description']
-    if name != "" and description != "":
+    id = request.form['Id']
+    level = request.form['Level']
+    name = request.form['Name']
+    phone = request.form['Phone']
+    time = request.form['Time']
+    description = request.form['Description']
+    if id != "":
         add_data = UserData(
+            Id=id,
+            Level=level,
             Name=name,
-            Description=description,
-            CreateDate=datetime.now()
+            phone=phone,
+            time=Time,
+            description=Description
         )
+        print("add data")
+        print(add_data)
         db.session.add(add_data)
         db.session.commit()
     return redirect(url_for('index'))
