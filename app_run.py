@@ -34,6 +34,12 @@ def add_data():
     phone = request.form['Phone']
     time = request.form['Time']
     description = request.form['Description']
+    print(id)
+    print(level)
+    print(name)
+    print(phone)
+    print(time)
+    print(description)
     if id != "":
         add_data = UserData(
             Id=id,
