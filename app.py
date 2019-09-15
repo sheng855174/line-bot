@@ -1,5 +1,6 @@
 from flask import Flask, request, abort
 import time
+from dbModel import *
 
 from linebot import (
     LineBotApi, WebhookHandler
