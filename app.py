@@ -36,12 +36,14 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    '''
     user_id = event.source.user_id
     profile = line_bot_api.get_profile(user_id)
     text = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + "\n"
     text += "display_name ： " + profile.display_name + "\n"
     text += "user_id ： " + profile.user_id + "\n"
     text += "type ： " + event.source.type + "\n"
+    '''
     if event.source.type == "group":
         group_id = event.source.group_id
         text += "group_id ： " + group_id + "\n\n"
@@ -60,12 +62,10 @@ def handle_message(event):
                 id = event.message.text.split(' ')[1]
                 try:
                     connection = psycopg2.connect(database="d9858nlbmqmtfl", user="jmwsmzobgczcti", password="17582fad1e5b57cf0bd0a2530040657bc30d00ce5ae90ea99d2e46ae04357406", host="ec2-174-129-27-158.compute-1.amazonaws.com", port="5432")
-                    print("Opened database successfully" + "\n")
                     cursor  = connection.cursor()
                     postgreSQL_select_Query = "select * from \"UserData\" where \"Id\"=%s"
                     cursor.execute(postgreSQL_select_Query, (id,))
                     result = cursor.fetchall()
-                    print("Selecting rows from mobile table using cursor.fetchall")
                     for row in result:
                         text += str(row[0]) + ", "
                         text += row[1] + ", "
@@ -83,13 +83,17 @@ def handle_message(event):
                         print("PostgreSQL connection is closed")
             if (event.message.text.find("!update") != -1) or (event.message.text.find("！update") != -1):
                 id = event.message.text.split(' ')[1]
+                description = event.message.text.split(' ')[2]
                 try:
                     connection = psycopg2.connect(database="d9858nlbmqmtfl", user="jmwsmzobgczcti", password="17582fad1e5b57cf0bd0a2530040657bc30d00ce5ae90ea99d2e46ae04357406", host="ec2-174-129-27-158.compute-1.amazonaws.com", port="5432")
-                    print("Opened database successfully" + "\n")
                     cursor  = connection.cursor()
-                    sql_update_query = "Update mobile set Description = %s where id = %s"
+                    sql_update_query = "Update \"UserData\" set \"Description\"=%s where \"Id\"=%s"
+                    cursor.execute(sql_update_query, (description, id))
+                    connection.commit()
+                    
+                    postgreSQL_select_Query = "select * from \"UserData\" where \"Id\"=%s"
+                    cursor.execute(postgreSQL_select_Query, (id,))
                     result = cursor.fetchall()
-                    print("Selecting rows from mobile table using cursor.fetchall")
                     for row in result:
                         text += str(row[0]) + ", "
                         text += row[1] + ", "
