@@ -88,9 +88,9 @@ def handle_message(event):
                     cursor.execute(sql_update_query, (description, id))
                     connection.commit()
                     sql_update_query = "Update \"UserData\" set \"Time\"=%s where \"Id\"=%s"
+                    tw = pytz.timezone('Asia/Taipei')
                     t = time.time()
                     dt = datetime.datetime.fromtimestamp(t).strftime('%Y-%m-%d %H:%M:%S')
-                    tw = pytz.timezone('Asia/Taipei')
                     dt = datetime.datetime.strptime(dt,'%Y-%m-%d %H:%M:%S').replace(tzinfo=tw)
                     cursor.execute(sql_update_query, (dt, id))
                     connection.commit()
